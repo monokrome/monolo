@@ -10,14 +10,18 @@ class Engine(GameObject):
 
         self.argv = argv
 
-        self._engine_dir = os.path.dirname(os.path.abspath(argv[0]))
+        # Describes the to our engine directory to be formatted into a string
+        path_info = [os.path.dirname(argv[0]), os.sep, '..']
+
+        self._engine_dir = os.path.abspath('{0}{1}{2}'.format(*path_info))
         self.game_name = getattr(monolo.conf, 'game_name', 'Demo')
 
+        # In debug mode, let people know where we've initialized everything.
         if getattr(monolo.conf, 'debug', False):
             print('Engine initialized.')
 
-            print('Game directory is {0}'.format(self.game_dir))
             print('Engine directory is {0}'.format(self.engine_dir))
+            print('Game directory is {0}'.format(self.game_dir))
 
     @property
     def game_name(self):
@@ -34,7 +38,7 @@ class Engine(GameObject):
         format_args = (
             self.engine_dir,
             os.sep,
-            new_name.lower(),
+            '../{0}'.format(new_name.lower()),
         )
 
         self._game_dir = os.path.abspath('{0}{1}{2}'.format(*format_args))
@@ -50,3 +54,4 @@ class Engine(GameObject):
         """ Get the directory in which our engine is running from. """
 
         return self._engine_dir
+

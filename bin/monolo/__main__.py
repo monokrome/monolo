@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-import monolo.conf
-import monolo.engine
+import monolo.conf, monolo.core.engine
 import sys
 
 monolo.conf.debug = True
-monolo.conf.engine = monolo.engine.Engine(sys.argv)
+monolo.conf.engine = monolo.core.engine.Engine(sys.argv)
 
