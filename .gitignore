@@ -1,7 +1,8 @@
 bin/*
+!/bin/monolo/config.ini
+!/bin/monolo
 include/*
 lib/*
-!/bin/monolo
 distribute-*.tar.gz
 *.o
 *.pyc
