@@ -1,3 +1,8 @@
+bin/*
+include/*
+lib/*
+!/bin/monolo
+distribute-*.tar.gz
 *.o
 *.pyc
 .*
