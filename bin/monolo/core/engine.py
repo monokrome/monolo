@@ -11,7 +11,7 @@ class Engine(GameObject):
         self.argv = argv
 
         # Describes the to our engine directory to be formatted into a string
-        path_info = [os.path.dirname(argv[0]), os.sep, '..']
+        path_info = (os.path.dirname(argv[0]), os.sep, '..')
 
         self._engine_dir = os.path.abspath('{0}{1}{2}'.format(*path_info))
         self.game_name = getattr(monolo.conf, 'game_name', 'Demo')
@@ -36,12 +36,14 @@ class Engine(GameObject):
         self._game_name = new_name
 
         format_args = (
-            self.engine_dir,
+            self.engine_dir, 
+            os.sep, 
+            '..',
             os.sep,
-            '../{0}'.format(new_name.lower()),
+            new_name.lower()
         )
 
-        self._game_dir = os.path.abspath('{0}{1}{2}'.format(*format_args))
+        self._game_dir = os.path.abspath('{0}{1}{2}{3}{4}'.format(*format_args))
 
     @property
     def game_dir(self):
